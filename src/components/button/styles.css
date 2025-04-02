@@ -1,0 +1,43 @@
+.button {
+    width: 148px;
+    height: 40px;
+    border-radius: 8px;
+    font-size: 13px;
+    line-height: 20px;
+    letter-spacing: 0.48px;
+    padding: 10px 12px;
+    cursor: pointer;
+}
+
+.button-primary {
+    background-color: #000000;
+    color: rgba(255,255,255,0.95);
+}
+
+.button-primary:hover {
+    color: rgba(255, 255, 255, 0.95);
+    background-color: rgba(59, 59, 59, 1);
+}
+
+.button-primary:active {
+    color: rgba(255, 255, 255, 0.95);
+    background-color: rgba(59, 59, 59, 1);
+}
+
+.button-outline{
+    color: rgba(59, 59, 59, 1);
+    background-color:transparent;
+    border: rgba(0, 0, 0, 0.2) solid 1px;
+}
+
+.button-outline:hover{
+    color: rgba(109, 74, 255, 1);
+    background-color:transparent;
+    border: rgba(0, 0, 0, 0.2) solid 1px;
+}
+
+.button-outline:active{
+    color: rgba(109, 74, 255, 1);
+    background-color:transparent;
+    border: rgba(109, 74, 255, 1) solid 1px;
+}
