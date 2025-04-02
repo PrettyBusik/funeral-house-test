@@ -5,5 +5,6 @@ export type ButtonProps = {
 
 export enum TypeOfButton {
     primary,
-    outline
+    outline,
+    flattened
 }

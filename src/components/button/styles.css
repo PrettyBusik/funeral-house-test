@@ -1,6 +1,6 @@
 .button {
-    width: 148px;
-    height: 40px;
+    /*width: 148px;*/
+    /*height: 40px;*/
     border-radius: 8px;
     font-size: 13px;
     line-height: 20px;
@@ -10,6 +10,8 @@
 }
 
 .button-primary {
+    width: 100%;
+    padding: 10px 12px;
     background-color: #000000;
     color: rgba(255,255,255,0.95);
 }
@@ -25,6 +27,8 @@
 }
 
 .button-outline{
+    width: 100%;
+    padding: 10px 12px;
     color: rgba(59, 59, 59, 1);
     background-color:transparent;
     border: rgba(0, 0, 0, 0.2) solid 1px;
@@ -41,3 +45,23 @@
     background-color:transparent;
     border: rgba(109, 74, 255, 1) solid 1px;
 }
+
+.button-flattened{
+    padding: 4px 8px;
+    color: rgba(59, 59, 59, 1);
+    background-color:transparent;
+    border: rgba(0, 0, 0, 0.2) solid 1px;
+}
+
+.button-flattened:hover{
+    color: rgba(109, 74, 255, 1);
+    background-color:transparent;
+    border: rgba(0, 0, 0, 0.2) solid 1px;
+
+}
+.button-flattened:active{
+    color: rgba(109, 74, 255, 1);
+    background-color:transparent;
+    border: rgba(109, 74, 255, 1) solid 1px;
+}
+
