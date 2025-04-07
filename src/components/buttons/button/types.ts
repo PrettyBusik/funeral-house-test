@@ -1,6 +1,7 @@
 export type ButtonProps = {
-    text: string
-    type: TypeOfButton
+    text: string,
+    type: TypeOfButton,
+    onClick:()=> void
 }
 
 export enum TypeOfButton {

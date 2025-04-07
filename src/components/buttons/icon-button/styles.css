@@ -1,0 +1,28 @@
+.button {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    background-color: #2563eb;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.save {
+    /* Стили для кнопки Save */
+}
+
+.cancel {
+    /* Стили для кнопки Cancel */
+}
+
+.edit {
+    width: 20px;
+    height: 20px;
+    background-image: url('data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2020%2020%22%20fill%3D%22none%22%3E%3Cpath%20stroke%3D%22%23fff%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%20stroke-width%3D%221.5%22%20d%3D%22M7.241%2016.875H3.75a.625.625%200%2001-.625-.625v-3.491a.625.625%200%2001%20.183-.442l9.375-9.375a.625.625%200%2001%20.884%200l3.491%203.491a.625.625%200%2001%200%20.884l-9.375%209.375a.627.627%200%2001-.442.183ZM10.625%205L15%209.375M7.46%2016.835L3.165%2012.54%22/%3E%3C/svg%3E');
+    background-size: contain;
+    background-repeat: no-repeat;
+}

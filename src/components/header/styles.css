@@ -1,0 +1,17 @@
+.container{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: 10px;
+}
+.header{
+    font-weight: 500;
+    font-size: 28px;
+    line-height: 40px;
+
+}
+
+.icon-button{
+
+cursor: pointer;
+}
