@@ -10,10 +10,12 @@
 }
 
 .button-primary {
-    /*width: 100%;*/
-    padding: 10px 12px;
+    width: 100%;
     background-color: #000000;
     color: rgba(255,255,255,0.95);
+    display: flex;
+    align-items: center;
+    gap: 12px;
 }
 
 .button-primary:hover {
@@ -27,14 +29,13 @@
 }
 
 .button-outline{
-    /*width: 100%;*/
-    padding: 10px 12px;
+    width: 100%;
     color: rgba(59, 59, 59, 1);
     background-color:transparent;
     border: rgba(0, 0, 0, 0.2) solid 1px;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    gap: 12px;
 }
 
 .button-outline:hover{
@@ -104,6 +105,10 @@
 }
 
 
-.button-flattened:hover svg path{
+.button-flattened:hover, .button-outline:hover svg path{
     stroke: rgba(109, 74, 255, 1);
+}
+
+.button-outline svg path{
+    stroke:rgba(59, 59, 59, 1);
 }

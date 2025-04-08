@@ -58,7 +58,17 @@ export const Icon=(props:IconProps)=>{
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none">
                 <path stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="m15.625 4.375-11.25 11.25M15.625 15.625 4.375 4.375"/>
             </svg>
-        )
+        ),
+        contractor:(
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none">
+                <path stroke="#fff" stroke-miterlimit="10" stroke-width="1.5" d="M9.333 3.707a5.733 5.733 0 0 1 4.394 5.566v1.274m-11.454 0V9.273a5.713 5.713 0 0 1 4.394-5.566M13.727 10.547H2.273a1.273 1.273 0 0 0 0 2.546h11.454a1.273 1.273 0 1 0 0-2.546Z"/>
+                <path stroke="#fff" stroke-miterlimit="10" stroke-width="1.5" d="M9.907 10.547H6.093l.573-6.906a.8.8 0 0 1 .797-.734h1.074a.8.8 0 0 1 .797.734l.573 6.906Z"/>
+            </svg>
+        ),
+        account:(
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none">
+            <path stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10.88 1.952c1.067.555 1.8 1.706 1.8 3.036s-.733 2.482-1.8 3.036m1.44 3.941c1.088.515 2.068 1.354 2.88 2.435m-14.4 0c1.401-1.865 3.304-3.012 5.4-3.012 2.096 0 3.998 1.147 5.4 3.012M9.44 4.988c0 1.872-1.45 3.388-3.24 3.388-1.79 0-3.24-1.516-3.24-3.388C2.96 3.117 4.41 1.6 6.2 1.6c1.79 0 3.24 1.517 3.24 3.388Z"/>
+        </svg>)
     }
 
     return<span>{icons[props.nameForIcon]}</span>

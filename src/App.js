@@ -1,6 +1,6 @@
 import './App.css';
-import {OrganizationPage} from "./pages/orgaanization/orgsnizationPage.tsx";
-import {Menu} from "./menu/index.tsx";
+import {OrganizationPage} from "./pages/orgaanization/index.tsx";
+import {TemplatePage} from "./pages/templatePage/index.tsx";
 
 
 function App() {
@@ -31,16 +31,9 @@ function App() {
     }
 
   return (
-    <div className="App">
-
-
-
-        <div style={{'margin':'50px'}}></div>
-      <div style={{'margin':'50px'}}></div>
-      <OrganizationPage company={company}/>
-        <div style={{'margin':'50px'}}></div>
-        <Menu/>
-    </div>
+    <>
+        <TemplatePage content={<OrganizationPage company={company}/>}/>
+    </>
   );
 }
 

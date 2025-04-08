@@ -5,29 +5,27 @@ import {Card} from "../../components/card/index.tsx";
 import {Button} from "../../components/buttons/button/index.tsx";
 import {StylesForButton} from "../../components/buttons/button/types.ts";
 import {CardWithPhoto} from "../../components/card/cardWithPhoto/index.tsx";
-import {Company} from "../../types/types";
-import {OrganizationProps} from "./typse";
+import {OrganizationProps} from "./typse.ts";
 import {Icon} from "../../components/icon/index.tsx";
 
 export const OrganizationPage = (props:OrganizationProps) => {
     const api = new BackendApi();
 
 
-    return <div className='container-page'>
+    return<>
         <Header text={`${props?.company?.name}`}
                 onDelete={() => api.deleteCompany(props.company.id)}
                 type='main'
         />
-
-        <div className='content-container'>
+        <div className='content-organization'>
             <Card
                 header='Company detailes'
-                  data={{
-                      "Agreement:":`${props.company.contract.no} / ${props.company.contract.issue_date}`,
-                      "Business entity:":props.company.businessEntity,
-                      "Company type:":props.company.type
-                  }}
-                  headerButton={<Button text='Edit' icon={<Icon nameForIcon={'edit'} />} style={StylesForButton.flattened}/>}
+                data={{
+                    "Agreement:":`${props.company.contract.no} / ${props.company.contract.issue_date}`,
+                    "Business entity:":props.company.businessEntity,
+                    "Company type:":props.company.type
+                }}
+                headerButton={<Button text='Edit' icon={<Icon nameForIcon={'edit'} />} style={StylesForButton.flattened}/>}
             />
 
             <Card header='Contacts'
@@ -55,5 +53,6 @@ export const OrganizationPage = (props:OrganizationProps) => {
                            headerButton={<Button text='Add' icon={<Icon nameForIcon={'add'} />} style={StylesForButton.flattened}/>}
             />
         </div>
-    </div>
+    </>
+
 }
