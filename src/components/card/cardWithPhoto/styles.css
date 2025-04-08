@@ -32,11 +32,10 @@
     position: absolute;
     top: 5px;
     right: 5px;
-    width: 28px;
-    height: 28px;
+    /*width: 28px;*/
+    /*height: 28px;*/
     background: rgba(59, 59, 59, 1);
     border: none;
-    color: white;
     padding: 6px;
     border-radius:8px;
     cursor: pointer;

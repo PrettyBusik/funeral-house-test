@@ -1,6 +1,6 @@
 .button {
-    /*width: 148px;*/
-    /*height: 40px;*/
+    width: 148px;
+    height: 40px;
     border-radius: 8px;
     font-size: 13px;
     line-height: 20px;
@@ -10,7 +10,7 @@
 }
 
 .button-primary {
-    width: 100%;
+    /*width: 100%;*/
     padding: 10px 12px;
     background-color: #000000;
     color: rgba(255,255,255,0.95);
@@ -27,11 +27,14 @@
 }
 
 .button-outline{
-    width: 100%;
+    /*width: 100%;*/
     padding: 10px 12px;
     color: rgba(59, 59, 59, 1);
     background-color:transparent;
     border: rgba(0, 0, 0, 0.2) solid 1px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .button-outline:hover{
@@ -47,16 +50,19 @@
 }
 
 .button-flattened{
+    width: auto;
     padding: 4px 8px;
     color: rgba(59, 59, 59, 1);
     background-color:transparent;
     border: rgba(0, 0, 0, 0.2) solid 1px;
+    display: flex;
+    align-items: center;
 }
 
 .button-flattened:hover{
     color: rgba(109, 74, 255, 1);
     background-color:transparent;
-    border: rgba(0, 0, 0, 0.2) solid 1px;
+    border: rgba(0, 0, 0, 0.3) solid 1px;
 
 }
 .button-flattened:active{
@@ -65,3 +71,39 @@
     border: rgba(109, 74, 255, 1) solid 1px;
 }
 
+.button-icon {
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    justify-content: center;
+    background-color:transparent;
+}
+
+.button-icon:hover{
+    background-color:rgb(255, 255, 255, 0.2);
+}
+
+.button-icon:active{
+    background-color:rgba(255, 255, 255, 0.3);
+}
+
+/* Стили слота иконки */
+.button-icon-slot {
+    display: inline-flex;
+    align-items: center;
+    /*justify-content: center;*/
+}
+
+.button-icon-slot svg {
+    display: block;
+}
+
+/* Если есть текст — выравниваем по левому краю */
+.button:not(.button-icon) .button-icon-slot {
+    margin-right: 6px;
+}
+
+
+.button-flattened:hover svg path{
+    stroke: rgba(109, 74, 255, 1);
+}

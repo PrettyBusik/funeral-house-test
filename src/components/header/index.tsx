@@ -1,16 +1,16 @@
 import {HeaderProp} from "./types.ts";
 import './styles.css'
 import {Button} from "../buttons/button/index.tsx";
-import {TypeOfButton} from "../buttons/button/types.ts";
-import {IconButton} from "../buttons/icon-button/index.tsx";
+import {StylesForButton} from "../buttons/button/types.ts";
+import {Icon} from "../icon/index.tsx";
 
 export const Header =(props:HeaderProp)=> {
-    return <div className='container'>
-        <p className='header'>{props.text}</p>
-        {/*<Button text='Edit' type={TypeOfButton.flattened} onClick={() => props.onEdit}/>*/}
-        {/*<Button text='Delete' type={TypeOfButton.flattened} onClick={() => props.onDelete()}/>*/}
-        <IconButton type='edit' text='Edit'></IconButton>
-        <IconButton type='delete' text='Delete'></IconButton>
+    return <div className='header-container'>
+        <p className='header-container-header'>{props.text}</p>
+        <div className='header-container-buttons'>
+            <Button style={StylesForButton.onlyIcon}  icon={<Icon nameForIcon={'edit'} />} ></Button>
+            <Button style={StylesForButton.onlyIcon}  icon={<Icon nameForIcon={'trash'} />} ></Button>
+        </div>
 
     </div>
 }

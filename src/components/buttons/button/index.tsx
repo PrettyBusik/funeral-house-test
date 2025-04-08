@@ -1,22 +1,22 @@
-import {ButtonProps, TypeOfButton} from "./types.ts";
+import {ButtonProps, StylesForButton} from "./types.ts";
 import "./styles.css"
 
 export const Button = (props: ButtonProps) => {
-    // return <button className={`button ${props.type===TypeOfButton.primary? 'button-primary':'button-outline'}`}>{props.text}</button>
-    // return <button className={`button ${props.type===TypeOfButton.primary? 'button-primary':'button-outline'}`}>{props.text}</button>
-
     const getCssClass = () => {
-        switch (props.type) {
-            case TypeOfButton.primary:
+        switch (props.style) {
+            case StylesForButton.primary:
                 return 'button-primary';
-            case TypeOfButton.outline:
+            case StylesForButton.outline:
                 return 'button-outline';
-            case TypeOfButton.flattened:
-                return 'button-flattened'
+            case StylesForButton.flattened:
+                return 'button-flattened';
+            case StylesForButton.onlyIcon:
+                return 'button-icon'
         }
     }
     return <button className={`button ${getCssClass()}`}>
-        {props.text}
+        {props.icon && <span className='button-icon-slot'>{props.icon}</span>}
+        {props.text && <span className="button-text">{props.text}</span>}
     </button>
 
 }

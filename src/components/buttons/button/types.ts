@@ -1,11 +1,17 @@
+import * as React from "react";
+
 export type ButtonProps = {
-    text: string,
-    type: TypeOfButton,
-    onClick:()=> void
+    text?: string,
+    style: StylesForButton,
+    icon?: React.ReactNode,
+    onClick: () => void,
 }
 
-export enum TypeOfButton {
+export enum StylesForButton {
     primary,
     outline,
-    flattened
+    flattened,
+    onlyIcon
 }
+
+export type Icons = 'save' | 'cancel' | 'edit' | 'add' | 'delete';

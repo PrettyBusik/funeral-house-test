@@ -1,47 +1,45 @@
 import './App.css';
-import {Button} from "./components/buttons/button/index.tsx";
-import {TypeOfButton} from "./components/buttons/button/types.ts"
-import {Input} from "./components/input/index.tsx";
-import {BackendApi} from "./servises/backendApi.ts";
 import {OrganizationPage} from "./pages/orgaanization/orgsnizationPage.tsx";
+import {Menu} from "./menu/index.tsx";
 
 
 function App() {
-//   const request= new BackendApi();
-//     request.getCompany(12);
-//   request.getContact(16);
-//
-//   const updatedCompany = {
-//     name: "New Name",
-//     shortName: "Short Name",
-//     businessEntity: "Partnership",
-//     contract: {
-//       no: "12345",
-//       issue_date: "2025-04-01",
-//     },
-//   };
-//
-//   request.updateInfoForCompany(updatedCompany, 12);
-//
-//
-//   const updatedContact = {
-//     lastname: "New Name",
-//     firstname: "Short Name",
-//     phone: "20200003000",
-//     email: "fff@j.com"
-//   };
-//
-//   request.updateInfoForContact(updatedContact, 16);
-//
-// request.deleteCompany(12);
-// request.getCompany(12);
+
+
+    const company={
+        "id": 12,
+        "contactId": 16,
+        "name": "Eternal Rest Funeral Home",
+        "shortName": "ERFH",
+        "businessEntity": "Partnership",
+        "contract": {
+            "no": "1624/2-24",
+            "issue_date": "2024-03-12T00:00:00Z"
+        },
+        "type":  ["funeral home", " logistics services", " burial care contractor"],
+        "status": "active",
+        "photo": [
+            {
+                "name":"0b8fc462dcabf7610a91.jpg",
+                "filepath": "https://test-task-api.allfuneral.com/0b8fc462dcabf7610a91.jpg",
+                "thumbpath": "https://test-task-api.allfuneral.com/0b8fc462dcabf7610a91_thumb.jpg",
+                "createdAt": "2024-12-17T08:00:00Z",
+            }
+        ],
+        "createdAt": "2020-11-21T08:03:00Z",
+        "updatedAt": "2020-11-23T09:30:00Z"
+    }
+
   return (
     <div className="App">
-      <Button text={'Label'} type={TypeOfButton.primary}/>
+
+
+
         <div style={{'margin':'50px'}}></div>
-        <Input businessEntity='Partnership' type={[]}/>
       <div style={{'margin':'50px'}}></div>
-      <OrganizationPage/>
+      <OrganizationPage company={company}/>
+        <div style={{'margin':'50px'}}></div>
+        <Menu/>
     </div>
   );
 }

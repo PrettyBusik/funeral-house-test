@@ -5,7 +5,7 @@ export type Company = {
     shortName: string;
     businessEntity: BusinessType;
     contract: {
-        no: number;
+        no: string;
         issue_date: string
     };
     type: TypeOfCompany[];
@@ -17,7 +17,7 @@ export type Company = {
 
 export  type BusinessType = 'Partnership' | 'Limited Liability Company' | 'Sole Proprietorship';
 
-export type TypeOfCompany = 'funeral_home' | 'logistics_service' | 'burial_care_contractor';
+export type TypeOfCompany = 'funeral home' | 'logistics service' | 'burial care contractor';
 
 export type Photo = {
     name: string;

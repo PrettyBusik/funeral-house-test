@@ -30,13 +30,19 @@
     display: inline-block;
 }
 
-.card-container-line {
+.card-body{
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.card-body-line {
     display: flex;
     line-height: 32px;
     align-items: center;
 }
 
-.card-container-line-key {
+.card-body-line-key {
     width: 160px;
     text-align: start;
     font-weight: 400;
@@ -46,7 +52,7 @@
     color: rgba(0, 0, 0, 0.5);
 }
 
-.card-container-line-value {
+.card-body-line-value {
     font-weight: 400;
     font-size: 14px;
     letter-spacing: 0.3px;

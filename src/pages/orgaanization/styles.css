@@ -1,7 +1,14 @@
 .container-page {
-    width: 800px;
+    width: 640px;
     height: 1000px;
     display: flex;
     flex-direction: column;
-    background-color: lightgrey;
+    background-color: #917676;
+}
+
+.content-container{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
 }
