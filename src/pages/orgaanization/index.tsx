@@ -16,6 +16,7 @@ export const OrganizationPage = () => {
     const [contact, setContact] = useState(null); // Состояние для хранения данных контакта
     const [error, setError] = useState(null); // Состояние для ошибки
     const [loading, setLoading] = useState(true); // Состояние для загрузки
+    const [photos, setPhotos]= useState([]);
 
 
     const api = new BackendApi();
@@ -63,37 +64,16 @@ export const OrganizationPage = () => {
 
     }
 
-    const handleFileUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const handleFileUpload = async (event: React.ChangeEvent<HTMLInputElement>) => {
         const file = event.target.files?.[0];
         if (!file || !company) return;
 
-        api.postImage(company.id, file)
-            .then(() => {
-                console.log("Фото отправлено");
-                // можно перезагрузить список фото, если нужно
-            })
-            .catch((err) => {
-                console.error("Ошибка загрузки фото:", err);
-            });
+        try {
+           const photo =await api.postImage(company.id, file); // отправляем
+            setPhotos([...photos,photo]); // обновляем стейт
+        } catch (err) {
+        }
     };
-
-    // const handleFileUpload = async (event: React.ChangeEvent<HTMLInputElement>) => {
-    //     const file = event.target.files?.[0];
-    //     if (!file || !company) return;
-    //
-    //     if (file.size > 5 * 1024 * 1024) { // 5MB лимит
-    //         alert("Файл слишком большой. Пожалуйста, выбери файл до 5MB.");
-    //         return;
-    //     }
-    //
-    //     try {
-    //         await api.postImage(company.id, file);
-    //         const updatedPhotos = await api.getCompanyPhotos(company.id);
-    //         setPhotos(updatedPhotos);
-    //     } catch (err) {
-    //         console.error("Ошибка загрузки:", err);
-    //     }
-    // };
 
 
 
@@ -120,41 +100,8 @@ export const OrganizationPage = () => {
                   headerButton={<Button text='Edit' icon={<Icon nameForIcon={'edit'}/>}
                                         style={StylesForButton.flattened}/>}
             />
-            {/*<CardWithPhoto photos={company.photo ?? []}*/}
-            {/*               header='Photos'*/}
-            {/*               headerButton={<Button text='Add' icon={<Icon nameForIcon={'add'} />} style={StylesForButton.flattened}/>}*/}
-            {/*/>*/}
 
-            {/*<CardWithPhoto photos={[*/}
-            {/*    {name: '0b8fc462dcabf7610a91.jpg',*/}
-            {/*        filepath: 'https://i.ytimg.com/vi/3zIv_6iz_Nw/hq720.jpg?sqp=-oaymwE7CK4FEIIDSFryq4qpAy0IARUAAAAAGAElAADIQj0AgKJD8AEB-AH-CYAC0AWKAgwIABABGH8gEygXMA8=&rs=AOn4CLARoFNuubB6o80V3pTWn6laeZX0Fw',*/}
-            {/*        thumbpath: 'https://i.ytimg.com/vi/3zIv_6iz_Nw/hq720.jpg?sqp=-oaymwE7CK4FEIIDSFryq4qpAy0IARUAAAAAGAElAADIQj0AgKJD8AEB-AH-CYAC0AWKAgwIABABGH8gEygXMA8=&rs=AOn4CLARoFNuubB6o80V3pTWn6laeZX0Fw',*/}
-            {/*        createdAt: '123'},*/}
-            {/*    {*/}
-            {/*        name: '0b8fc462dcabf7610a91.jpg',*/}
-            {/*        filepath: 'https://www.reconnectwithnature.org/getmedia/6ae123ba-b242-45c3-b7d6-6906663cfe4b/Double-rainbow-Shutterstock.jpg?width=1500&height=1001&ext=.jpg',*/}
-            {/*        thumbpath: 'https://www.reconnectwithnature.org/getmedia/6ae123ba-b242-45c3-b7d6-6906663cfe4b/Double-rainbow-Shutterstock.jpg?width=1500&height=1001&ext=.jpg',*/}
-            {/*        createdAt: '123'*/}
-            {/*    }*/}
-            {/*]}*/}
-            {/*               header='Photos'*/}
-            {/*               headerButton={<Button text='Add' icon={<Icon nameForIcon={'add'} />} style={StylesForButton.flattened}/>}*/}
-            {/*/>*/}
-
-            <CardWithPhoto photos={[
-                {
-                    name: '0b8fc462dcabf7610a91.jpg',
-                    filepath: 'https://i.ytimg.com/vi/3zIv_6iz_Nw/hq720.jpg?sqp=-oaymwE7CK4FEIIDSFryq4qpAy0IARUAAAAAGAElAADIQj0AgKJD8AEB-AH-CYAC0AWKAgwIABABGH8gEygXMA8=&rs=AOn4CLARoFNuubB6o80V3pTWn6laeZX0Fw',
-                    thumbpath: 'https://i.ytimg.com/vi/3zIv_6iz_Nw/hq720.jpg?sqp=-oaymwE7CK4FEIIDSFryq4qpAy0IARUAAAAAGAElAADIQj0AgKJD8AEB-AH-CYAC0AWKAgwIABABGH8gEygXMA8=&rs=AOn4CLARoFNuubB6o80V3pTWn6laeZX0Fw',
-                    createdAt: '123'
-                },
-                {
-                    name: '0b8fc462dcabf7610a91.jpg',
-                    filepath: 'https://www.reconnectwithnature.org/getmedia/6ae123ba-b242-45c3-b7d6-6906663cfe4b/Double-rainbow-Shutterstock.jpg?width=1500&height=1001&ext=.jpg',
-                    thumbpath: 'https://www.reconnectwithnature.org/getmedia/6ae123ba-b242-45c3-b7d6-6906663cfe4b/Double-rainbow-Shutterstock.jpg?width=1500&height=1001&ext=.jpg',
-                    createdAt: '123'
-                }
-            ]}
+            <CardWithPhoto photos={photos}
                            header='Photos'
                            headerButton={
                                <label className='button button-flattened'>

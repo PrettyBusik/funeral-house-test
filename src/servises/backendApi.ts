@@ -59,7 +59,7 @@ export class BackendApi {
             .then((res) => this.checkResponse(res))
     }
 
-    postImage=(idCompany:number, photo:File)=>{
+    postImage=(idCompany:number, photo:File):Promise<Photo>=>{
         const formData = new FormData();
         formData.append('file', photo);
         return fetch(`${this.URL}/companies/${idCompany}/image`,
