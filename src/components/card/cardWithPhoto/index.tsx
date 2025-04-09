@@ -13,10 +13,10 @@ export const CardWithPhoto=(props:CardWithPhotoProps)=>{
         <div className='images-container'>
             {props.photos && props.photos.map((image) => (
                 <div className='image' key={image.filepath}>
-                    <div className='image-wrapper'>
+                    <div className='image-wrapper' key={image.filepath}>
                         <img src={image.thumbpath} alt={image.name} className='image-preview' />
                         <div className='image-button' >
-                            <Button icon={<Icon nameForIcon='trashWhite'/>} style={StylesForButton.onlyIcon}/>
+                            <Button icon={<Icon nameForIcon='trashWhite'/>} style={StylesForButton.onlyIcon} onClick={()=>props.onDeletePhoto(image.name)}/>
                         </div>
                     </div>
                 </div>

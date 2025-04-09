@@ -10,6 +10,7 @@ import {useParams} from "react-router-dom";
 import {useEffect, useState} from "react";
 import {useNavigate} from "react-router-dom";
 import React from "react";
+import {Photo} from "../../types/types";
 
 export const OrganizationPage = () => {
     const [company, setCompany] = useState(null); // Состояние для хранения данных компании
@@ -60,8 +61,10 @@ export const OrganizationPage = () => {
         goToOrganizationList();
     };
 
-    const handelDeletePhoto = () => {
-
+    const handelDeletePhoto = (photoName:string) => {
+        const updatedPhotos = photos.filter((photo) => photo.name !== photoName);
+        setPhotos(updatedPhotos);
+        api.deletePhoto(company.id, photoName)
     }
 
     const handleFileUpload = async (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -70,7 +73,7 @@ export const OrganizationPage = () => {
 
         try {
            const photo =await api.postImage(company.id, file); // отправляем
-            setPhotos([...photos,photo]); // обновляем стейт
+            setPhotos((prevPhotos) => [...prevPhotos, photo]); // обновляем стейт
         } catch (err) {
         }
     };
@@ -103,6 +106,7 @@ export const OrganizationPage = () => {
 
             <CardWithPhoto photos={photos}
                            header='Photos'
+                           onDeletePhoto={handelDeletePhoto}
                            headerButton={
                                <label className='button button-flattened'>
                                    <Icon nameForIcon={'add'}/>

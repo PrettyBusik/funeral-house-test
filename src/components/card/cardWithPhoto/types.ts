@@ -5,5 +5,6 @@ export type CardWithPhotoProps = {
     photos: Photo[],
     header: string;
     headerButton: React.ReactNode;
+    onDeletePhoto: ()=>{}
 }
 

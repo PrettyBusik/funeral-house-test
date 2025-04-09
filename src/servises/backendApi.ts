@@ -84,7 +84,7 @@ export class BackendApi {
     }
 
     deletePhoto= (idCompany:number, photoName:string)=>{
-        return fetch(`${this.URL}/companies/${idCompany}/${photoName}`,
+        return fetch(`${this.URL}/companies/${idCompany}/image/${photoName}`,
             {
                 method: 'DELETE',
                 headers: {
