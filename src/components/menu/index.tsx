@@ -7,7 +7,7 @@ import "./styles.css"
 export const Menu=()=>{
     const navigate = useNavigate();
     const goToOrganizationList = () => {
-        navigate("/");
+        navigate("/companies/12");
     };
 
     return <div className='menu-container'>

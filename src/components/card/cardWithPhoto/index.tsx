@@ -11,7 +11,7 @@ export const CardWithPhoto=(props:CardWithPhotoProps)=>{
             <div className='card-container-title-button'>{props.headerButton}</div>
         </div>
         <div className='images-container'>
-            {props.data.map((image) => (
+            {props.photos && props.photos.map((image) => (
                 <div className='image' key={image.filepath}>
                     <div className='image-wrapper'>
                         <img src={image.thumbpath} alt={image.name} className='image-preview' />

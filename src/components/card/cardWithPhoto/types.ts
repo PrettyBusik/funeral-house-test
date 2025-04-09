@@ -1,14 +1,9 @@
 import React from "react";
+import {Photo} from "../../../types/types";
 
 export type CardWithPhotoProps = {
-    data: ImageFile[],
+    photos: Photo[],
     header: string;
     headerButton: React.ReactNode;
 }
 
-export type ImageFile = {
-    name: string;
-    filepath: string;
-    thumbpath: string;
-    createdAt: string;
-};

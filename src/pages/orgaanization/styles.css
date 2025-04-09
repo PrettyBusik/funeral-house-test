@@ -6,3 +6,7 @@
     gap: 16px;
 }
 
+.inputForFiles{
+    position: fixed;
+    left: -1000px;
+}
