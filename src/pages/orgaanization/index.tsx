@@ -8,6 +8,7 @@ import {CardWithPhoto} from "../../components/card/cardWithPhoto/index.tsx";
 import {Icon} from "../../components/icon/index.tsx";
 import { useParams } from "react-router-dom";
 import {useEffect, useState} from "react";
+import { useNavigate } from "react-router-dom";
 
 export const OrganizationPage = () => {
     const [company, setCompany] = useState(null); // Состояние для хранения данных компании
@@ -18,29 +19,11 @@ export const OrganizationPage = () => {
 
     const api = new BackendApi();
     const {id}=useParams();
+    const navigate = useNavigate();
 
-    // useEffect(() => {
-    //     const fetchCompany =  () => {
-    //             api.getCompany(id)
-    //                 .then((companyInfo)=>{
-    //                     setCompany(companyInfo);
-    //                     api.getContact(companyInfo.id)
-    //                         .then((contactInfo)=>{
-    //                             setContact(contactInfo)
-    //                         })
-    //                     setLoading(false); // Устанавливаем состояние загрузки в false
-    //                 }) // Запрос на сервер и сохраняем полученные данные
-    //
-    //        .catch((err) => {
-    //            setError(err)// Обрабатываем ошибку
-    //                setLoading(false); // Устанавливаем состояние загрузки в false
-    //        }
-    //        )
-    //
-    //     };
-    //
-    //     fetchCompany(); // Вызываем функцию для получения данных
-    // }, [id]); // Зависимость от id, чтобы запрос выполнялся при изменении id в URL
+    const goToOrganizationList = () => {
+        navigate("/");
+    };
 
     useEffect(() => {
         const fetchData = async () => {
@@ -70,8 +53,13 @@ export const OrganizationPage = () => {
         return <p>Company doesn't exist</p>;
     }
 
+    const handleDelete = async () => {
+        await api.deleteCompany(company.id);
+        goToOrganizationList();
+    };
+
     return<>
-         <Header text={`${company?.name}`}/>
+         <Header text={`${company?.name}`} onDelete={handleDelete} />
             <div className='content-organization'>
                 <Card
                     header='Company detailes'
