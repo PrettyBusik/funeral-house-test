@@ -1,9 +1,15 @@
+import { useNavigate } from "react-router-dom";
 import {Button} from "../buttons/button/index.tsx";
 import {StylesForButton} from "../buttons/button/types.ts";
 import {Icon} from "../icon/index.tsx";
 import "./styles.css"
 
 export const Menu=()=>{
+    const navigate = useNavigate();
+    const goToOrganizationList = () => {
+        navigate("/");
+    };
+
     return <div className='menu-container'>
         <div className='menu-small'>
             <div className='menu-small-top-buttons'>
@@ -22,7 +28,7 @@ export const Menu=()=>{
                 <h2 className='menu-big-header-subtitle'>Process Manager</h2>
             </div>
             <div className='menu-big-options'>
-            <Button style={StylesForButton.primary} icon={<Icon nameForIcon='company'/>} text='Organizations'/>
+            <Button style={StylesForButton.primary} icon={<Icon nameForIcon='company'/>} text='Organizations' onClick={goToOrganizationList}/>
             <Button style={StylesForButton.outline} icon={<Icon nameForIcon='contractor'/>} text='Contractors'/>
             <Button style={StylesForButton.outline} icon={<Icon nameForIcon='account'/>} text='Clients'/>
         </div>

@@ -14,7 +14,7 @@ export const Button = (props: ButtonProps) => {
                 return 'button-icon'
         }
     }
-    return <button className={`button ${getCssClass()}`}>
+    return <button className={`button ${getCssClass()}`} onClick={props.onClick}>
         {props.icon && <span className='button-icon-slot'>{props.icon}</span>}
         {props.text && <span className="button-text">{props.text}</span>}
     </button>
