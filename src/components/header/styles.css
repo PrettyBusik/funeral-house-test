@@ -4,10 +4,18 @@
     justify-content: space-between;
     margin-bottom:  32px;
 }
-.header-container-header{
+.title-main{
     font-weight: 500;
     font-size: 28px;
     line-height: 40px;
+}
+
+.title-secondary{
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 24px;
+    letter-spacing: 0.3px;
+    vertical-align: middle;
 }
 
 .header-container-buttons{

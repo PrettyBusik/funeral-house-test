@@ -1,17 +1,23 @@
-import { useNavigate } from "react-router-dom";
-import {HeaderProp} from "./types.ts";
+import {HeaderProp, TypeForHeader} from "./types.ts";
 import './styles.css'
-import {Button} from "../buttons/button/index.tsx";
-import {StylesForButton} from "../buttons/button/types.ts";
-import {Icon} from "../icon/index.tsx";
+import {StylesForButton} from "../buttons/button/types";
 
 
 export const Header =(props:HeaderProp)=> {
+    const getCssClass = () => {
+        switch (props.type) {
+            case TypeForHeader.main:
+                return 'title-main';
+            case TypeForHeader.secondary:
+                return 'title-secondary';
+        }
+    }
+
     return <div className='header-container'>
-        <p className='header-container-header'>{props.text}</p>
+        {/*<p className='header-container-header'>{props.text}</p>*/}
+        <p className={getCssClass()}>{props.text}</p>
         <div className='header-container-buttons'>
-            <Button onClick={props.onEdit} style={StylesForButton.onlyIcon}  icon={<Icon nameForIcon={'edit'} />} ></Button>
-            <Button onClick={props.onDelete} style={StylesForButton.onlyIcon}  icon={<Icon nameForIcon={'trash'}/>} ></Button>
+            {props.children}
         </div>
 
     </div>

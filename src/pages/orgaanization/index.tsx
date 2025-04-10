@@ -10,6 +10,8 @@ import {useNavigate, useParams} from "react-router-dom";
 import React, {useEffect, useState} from "react";
 import {Modal} from "../../components/modal/index.tsx";
 import {Input} from "../../components/input/index.tsx";
+import {Form} from "../../components/form/index.tsx";
+import {TypeForHeader} from "../../components/header/types.ts";
 
 export const OrganizationPage = () => {
     const [company, setCompany] = useState(null); // Состояние для хранения данных компании
@@ -103,7 +105,12 @@ export const OrganizationPage = () => {
 
 
     return <>
-        <Header text={`${company?.name}`} onDelete={handleOpenDeleteModal} onEdit={handleOpenEditeModal}/>
+        {/*<Header text={`${company?.name}`} onDelete={handleOpenDeleteModal} onEdit={handleOpenEditeModal}/>*/}
+        <Header text={`${company?.name}`}
+        type={TypeForHeader.main}>
+            <Button onClick={handleOpenEditeModal} style={StylesForButton.onlyIcon}  icon={<Icon nameForIcon={'edit'} />} ></Button>
+            <Button onClick={handleOpenDeleteModal} style={StylesForButton.onlyIcon}  icon={<Icon nameForIcon={'trash'}/>} ></Button>
+        </Header>
         <div className='content-organization'>
             <Card
                 header='Company detailes'
@@ -173,6 +180,8 @@ export const OrganizationPage = () => {
                        </>
                    }/>
         )}
+
+        <Form header='Company Details' />
 
     </>
 

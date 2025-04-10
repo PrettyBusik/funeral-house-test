@@ -24,7 +24,7 @@ export const Icon=(props:IconProps)=>{
         ),
         check:(
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none">
-                <path stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="m16.875 5.625-8.75 8.75L3.75 10"/>
+                <path stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="m16.875 5.625-8.75 8.75L3.75 10"/>
             </svg>
         ),
         company:(
@@ -56,7 +56,7 @@ export const Icon=(props:IconProps)=>{
         ),
         cancel:(
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none">
-                <path stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="m15.625 4.375-11.25 11.25M15.625 15.625 4.375 4.375"/>
+                <path stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="m15.625 4.375-11.25 11.25M15.625 15.625 4.375 4.375"/>
             </svg>
         ),
         contractor:(

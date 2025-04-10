@@ -1,5 +1,13 @@
+import * as React from "react";
+
 export type HeaderProp ={
     text:string;
-    onEdit:()=> void;
-    onDelete: ()=> void;
+    type:TypeForHeader;
+    children: React.ReactNode;
+}
+
+
+export enum TypeForHeader{
+    main,
+    secondary
 }
