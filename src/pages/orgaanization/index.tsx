@@ -12,6 +12,7 @@ import {Modal} from "../../components/modal/index.tsx";
 import {Input} from "../../components/input/index.tsx";
 import {Form} from "../../components/form/index.tsx";
 import {TypeForHeader} from "../../components/header/types.ts";
+import {CardWithFormForCompany} from "../../components/card/cardWithFormForCompany/index.tsx";
 
 export const OrganizationPage = () => {
     const [company, setCompany] = useState(null); // Состояние для хранения данных компании
@@ -94,56 +95,69 @@ export const OrganizationPage = () => {
 
     const handelUpdatingCompanyName = async () => {
         try {
-            await api.updateInfoForCompany(company.id, { name: organizationName });
+            await api.updateInfoForCompany(company.id, {name: organizationName});
             setIsEditModalOpen(false);
-            setCompany({ ...company, name: organizationName });
+            setCompany({...company, name: organizationName});
         } catch (error) {
             console.error("Ошибка при обновлении имени организации", error);
         }
     };
 
 
-
     return <>
         {/*<Header text={`${company?.name}`} onDelete={handleOpenDeleteModal} onEdit={handleOpenEditeModal}/>*/}
         <Header text={`${company?.name}`}
-        type={TypeForHeader.main}>
-            <Button onClick={handleOpenEditeModal} style={StylesForButton.onlyIcon}  icon={<Icon nameForIcon={'edit'} />} ></Button>
-            <Button onClick={handleOpenDeleteModal} style={StylesForButton.onlyIcon}  icon={<Icon nameForIcon={'trash'}/>} ></Button>
+                type={TypeForHeader.main}>
+            <Button onClick={handleOpenEditeModal} style={StylesForButton.onlyIcon}
+                    icon={<Icon nameForIcon={'edit'}/>}></Button>
+            <Button onClick={handleOpenDeleteModal} style={StylesForButton.onlyIcon}
+                    icon={<Icon nameForIcon={'trash'}/>}></Button>
         </Header>
         <div className='content-organization'>
             <Card
-                header='Company detailes'
                 data={{
                     "Agreement:": `${company.contract.no} / ${company.contract.issue_date}`,
                     "Business entity:": company.businessEntity,
                     "Company type:": company.type
                 }}
-                headerButton={<Button text='Edit' icon={<Icon nameForIcon={'edit'}/>}
-                                      style={StylesForButton.flattened}/>}
-            />
+            >
+                <Header text='Company detailes' type={TypeForHeader.secondary}>
+                    <Button text='Edit'
+                            style={StylesForButton.flattened}
+                            onClick={() => {
+                            }}
+                            icon={<Icon nameForIcon='edit'/>}/>
+                </Header>
+            </Card>
 
-            <Card header='Contacts'
-                  data={{
-                      'Responsible person:': `${contact.firstname} ${contact.lastname}`,
-                      'Phone number:': `${contact.phone}`,
-                      'E-mail::': `${contact.email}`
-                  }}
-                  headerButton={<Button text='Edit' icon={<Icon nameForIcon={'edit'}/>}
-                                        style={StylesForButton.flattened}/>}
-            />
+            <Card
+                data={{
+                    'Responsible person:': `${contact.firstname} ${contact.lastname}`,
+                    'Phone number:': `${contact.phone}`,
+                    'E-mail::': `${contact.email}`
+                }}
+            >
+                <Header text='Contacts' type={TypeForHeader.secondary}>
+                    <Button text='Edit'
+                            style={StylesForButton.flattened}
+                            onClick={() => {
+                            }}
+                            icon={<Icon nameForIcon='edit'/>}/>
+                </Header>
+            </Card>
+
 
             <CardWithPhoto photos={photos}
-                           header='Photos'
-                           onDeletePhoto={handelDeletePhoto}
-                           headerButton={
-                               <label className='button button-flattened'>
-                                   <Icon nameForIcon={'add'}/>
-                                   &nbsp;Add
-                                   <input className='inputForFiles' type='file'
-                                          onChange={handleFileUpload}/>
-                               </label>}
-            />
+                           onDeletePhoto={handelDeletePhoto}>
+                <Header text='Photos' type={TypeForHeader.secondary}>
+                    <label className='button button-flattened'>
+                        <Icon nameForIcon={'add'}/>
+                        &nbsp;Add
+                        <input className='inputForFiles' type='file'
+                               onChange={handleFileUpload}/>
+                    </label>
+                </Header>
+            </CardWithPhoto>
         </div>
 
         {isDeleteModalOpen && (
@@ -167,7 +181,8 @@ export const OrganizationPage = () => {
             <Modal header="Specify the Organization's name"
                    content={
                        <>
-                           <Input value={organizationName}
+                           <Input
+                               value={organizationName}
                                   onChange={(e) => setOrganizationName(e.target.value)}/>
                            <div className="modal-buttons">
                                <Button style={StylesForButton.outline}
@@ -180,8 +195,8 @@ export const OrganizationPage = () => {
                        </>
                    }/>
         )}
-
-        <Form header='Company Details' />
+<div style={{marginBottom:'50px'}}></div>
+        <CardWithFormForCompany company={company}/>
 
     </>
 

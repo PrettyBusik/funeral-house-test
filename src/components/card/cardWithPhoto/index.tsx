@@ -7,8 +7,9 @@ import {Icon} from "../../icon/index.tsx";
 export const CardWithPhoto=(props:CardWithPhotoProps)=>{
     return <div className='card-container'>
         <div className='card-container-title'>
-            <h3 className='card-container-title-text'>{props.header} </h3>
-            <div className='card-container-title-button'>{props.headerButton}</div>
+            {/*<h3 className='card-container-title-text'>{props.header} </h3>*/}
+            {/*<div className='card-container-title-button'>{props.headerButton}</div>*/}
+            {props.children}
         </div>
         <div className='images-container'>
             {props.photos && props.photos.map((image) => (

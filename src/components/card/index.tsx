@@ -4,8 +4,7 @@ import "./styles.css"
 export const Card = (props:CardProps) => {
     return <div className='card-container'>
         <div className='card-container-title'>
-            <h3 className='card-container-title-text'>{props.header} </h3>
-            <div className='card-container-title-button'>{props.headerButton}</div>
+            {props.children}
         </div>
         <div className='card-body'>
             {Object.entries(props.data).map(([key, value])=>(

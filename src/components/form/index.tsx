@@ -1,4 +1,5 @@
 import {FormProps} from "./types";
+import "./styles.css"
 import {Header} from "../header/index.tsx";
 import {Button} from "../buttons/button/index.tsx";
 import {StylesForButton} from "../buttons/button/types.ts";
@@ -15,7 +16,9 @@ export const Form = (props: FormProps) => {
             <Button text='Cancel' style={StylesForButton.flattened} onClick={() => {
             }} icon={<Icon nameForIcon={'cancel'}/>}/>
         </Header>
-        <form></form>
+        <div className='form-fields'>
+            {props.children}
+        </div>
     </>
 
 }

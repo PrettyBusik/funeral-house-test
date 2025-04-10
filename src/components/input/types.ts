@@ -1,9 +1,7 @@
-import {TypeOfCompany} from "../../types/types";
+import React from "react";
 
 export type InputProp={
     value:string;
-    onChange:()=> Promise<void>;
-    // businessEntity:string;
-    // type:TypeOfCompany[]
+    onChange:(()=> Promise<void>)|((e: React.ChangeEvent<HTMLInputElement>) => void);
 }
 

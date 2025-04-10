@@ -1,6 +1,5 @@
 import {HeaderProp, TypeForHeader} from "./types.ts";
 import './styles.css'
-import {StylesForButton} from "../buttons/button/types";
 
 
 export const Header =(props:HeaderProp)=> {

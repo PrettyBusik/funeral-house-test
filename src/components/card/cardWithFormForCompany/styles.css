@@ -1,0 +1,27 @@
+.fields{
+    display: flex;
+    gap: 12px;
+}
+
+.input-container{
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.input-label{
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 20px;
+    letter-spacing: 0.25px;
+    vertical-align: middle;
+    color: rgba(0, 0, 0, 0.5);
+}
+
+.input-label-long{
+    width: 160px;
+
+}
+.input-label-short{
+    width: 35px;
+}
