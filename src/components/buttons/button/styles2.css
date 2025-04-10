@@ -16,7 +16,6 @@
     color: rgba(255,255,255,0.95);
     display: flex;
     align-items: center;
-    justify-content: center;
     gap: 12px;
 }
 
@@ -37,7 +36,6 @@
     border: rgba(0, 0, 0, 0.2) solid 1px;
     display: flex;
     align-items: center;
-    justify-content: center;
     gap: 12px;
 }
 
@@ -61,8 +59,6 @@
     border: rgba(0, 0, 0, 0.2) solid 1px;
     display: flex;
     align-items: center;
-    justify-content: center;
-    gap: 12px;
 }
 
 .button-flattened:hover{

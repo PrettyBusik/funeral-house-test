@@ -10,3 +10,8 @@
     position: fixed;
     left: -1000px;
 }
+
+.modal-buttons{
+    display: flex;
+    gap: 16px;
+}

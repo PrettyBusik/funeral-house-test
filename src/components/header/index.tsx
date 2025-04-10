@@ -10,7 +10,7 @@ export const Header =(props:HeaderProp)=> {
     return <div className='header-container'>
         <p className='header-container-header'>{props.text}</p>
         <div className='header-container-buttons'>
-            <Button style={StylesForButton.onlyIcon}  icon={<Icon nameForIcon={'edit'} />} ></Button>
+            <Button onClick={props.onEdit} style={StylesForButton.onlyIcon}  icon={<Icon nameForIcon={'edit'} />} ></Button>
             <Button onClick={props.onDelete} style={StylesForButton.onlyIcon}  icon={<Icon nameForIcon={'trash'}/>} ></Button>
         </div>
 

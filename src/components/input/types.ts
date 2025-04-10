@@ -1,7 +1,9 @@
 import {TypeOfCompany} from "../../types/types";
 
 export type InputProp={
-    businessEntity:string;
-    type:TypeOfCompany[]
+    value:string;
+    onChange:()=> Promise<void>;
+    // businessEntity:string;
+    // type:TypeOfCompany[]
 }
 

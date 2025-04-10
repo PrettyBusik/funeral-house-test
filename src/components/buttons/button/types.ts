@@ -13,5 +13,3 @@ export enum StylesForButton {
     flattened,
     onlyIcon
 }
-
-export type Icons = 'save' | 'cancel' | 'edit' | 'add' | 'delete';

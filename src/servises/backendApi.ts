@@ -2,7 +2,7 @@ import {Company, CompanyUpdate, Contact, ContactUpdate, Photo} from "../types/ty
 import {DELETE} from "mobx/dist/types/observablemap";
 
 export class BackendApi {
-    private auth = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiVVNFUk5BTUUiLCJpYXQiOjE3NDQyMjE3ODYsImV4cCI6MTc0NDgyNjU4Nn0.qn1WGaXEdclIX1nqMswM3yCpC2sgw2F8fEfjkr2IV2w';
+    private auth = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiVVNFUk5BTUUiLCJpYXQiOjE3NDQyODIzMjksImV4cCI6MTc0NDg4NzEyOX0.XvqAd2mhX9uFRAlWaAGeS0sDOrnamkFtsdty_HBMMGA';
     private URL = 'https://test-task-api.allfuneral.com';
 
     checkResponse = <T>(res: Response): Promise<T> =>
@@ -33,21 +33,31 @@ export class BackendApi {
             .then((res) => this.checkResponse(res))
     }
 
-    updateInfoForCompany = (data: CompanyUpdate, id: number) => {
-        return fetch(`${this.URL}/companies/${id}`,
+    updateInfoForCompany = (companyId: number, data: CompanyUpdate) => {
+        const body = {
+            name: data.name,
+            shortName: data.shortName,
+            businessEntity: data.businessEntity,
+            contract: {
+                no: data.no,  // предполагаю, что данные могут быть в contractNo и contractDate
+                issue_date: data.issue_date,  // так как в документации ожидается строка с датой
+            },
+            type: data.type,  // массив типов
+        };
+        return fetch(`${this.URL}/companies/${companyId}`,
             {
                 method: 'PATCH',
                 headers: {
                     'Content-Type': 'application/json',
                     'Authorization': `Bearer ${this.auth}`,
                 },
-                body: JSON.stringify(data)
+                body: JSON.stringify(body)
             })
             .then((res) => this.checkResponse(res))
     }
 
-    updateInfoForContact = (data: ContactUpdate, id: number) => {
-        return fetch(`${this.URL}/contacts/${id}`,
+    updateInfoForContact = (data: ContactUpdate, contactId: number) => {
+        return fetch(`${this.URL}/contacts/${contactId}`,
             {
                 method: 'PATCH',
                 headers: {

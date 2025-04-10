@@ -6,23 +6,25 @@ import {Button} from "../../components/buttons/button/index.tsx";
 import {StylesForButton} from "../../components/buttons/button/types.ts";
 import {CardWithPhoto} from "../../components/card/cardWithPhoto/index.tsx";
 import {Icon} from "../../components/icon/index.tsx";
-import {useParams} from "react-router-dom";
-import {useEffect, useState} from "react";
-import {useNavigate} from "react-router-dom";
-import React from "react";
-import {Photo} from "../../types/types";
+import {useNavigate, useParams} from "react-router-dom";
+import React, {useEffect, useState} from "react";
+import {Modal} from "../../components/modal/index.tsx";
+import {Input} from "../../components/input/index.tsx";
 
 export const OrganizationPage = () => {
     const [company, setCompany] = useState(null); // Состояние для хранения данных компании
     const [contact, setContact] = useState(null); // Состояние для хранения данных контакта
     const [error, setError] = useState(null); // Состояние для ошибки
     const [loading, setLoading] = useState(true); // Состояние для загрузки
-    const [photos, setPhotos]= useState([]);
+    const [photos, setPhotos] = useState([]);
+    const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
+    const [isEditModalOpen, setIsEditModalOpen] = useState(false);
+    const [organizationName, setOrganizationName] = useState('');
 
 
+    const navigate = useNavigate();
     const api = new BackendApi();
     const {id} = useParams();
-    const navigate = useNavigate();
 
     const goToOrganizationList = () => {
         navigate("/");
@@ -37,6 +39,7 @@ export const OrganizationPage = () => {
                 const contactInfo = await api.getContact(companyInfo.contactId);
                 setContact(contactInfo);
 
+                setOrganizationName(companyInfo.name)
                 setLoading(false);
             } catch (err) {
                 setError(err);
@@ -59,9 +62,10 @@ export const OrganizationPage = () => {
     const handleDeleteOrganization = async () => {
         await api.deleteCompany(company.id);
         goToOrganizationList();
+        setIsDeleteModalOpen(false);
     };
 
-    const handelDeletePhoto = (photoName:string) => {
+    const handelDeletePhoto = (photoName: string) => {
         const updatedPhotos = photos.filter((photo) => photo.name !== photoName);
         setPhotos(updatedPhotos);
         api.deletePhoto(company.id, photoName)
@@ -72,16 +76,34 @@ export const OrganizationPage = () => {
         if (!file || !company) return;
 
         try {
-           const photo =await api.postImage(company.id, file); // отправляем
+            const photo = await api.postImage(company.id, file); // отправляем
             setPhotos((prevPhotos) => [...prevPhotos, photo]); // обновляем стейт
         } catch (err) {
+        }
+    };
+
+    const handleOpenDeleteModal = () => {
+        setIsDeleteModalOpen(true);
+    };
+
+    const handleOpenEditeModal = () => {
+        setIsEditModalOpen(true);
+    };
+
+    const handelUpdatingCompanyName = async () => {
+        try {
+            await api.updateInfoForCompany(company.id, { name: organizationName });
+            setIsEditModalOpen(false);
+            setCompany({ ...company, name: organizationName });
+        } catch (error) {
+            console.error("Ошибка при обновлении имени организации", error);
         }
     };
 
 
 
     return <>
-        <Header text={`${company?.name}`} onDelete={handleDeleteOrganization}/>
+        <Header text={`${company?.name}`} onDelete={handleOpenDeleteModal} onEdit={handleOpenEditeModal}/>
         <div className='content-organization'>
             <Card
                 header='Company detailes'
@@ -116,6 +138,42 @@ export const OrganizationPage = () => {
                                </label>}
             />
         </div>
+
+        {isDeleteModalOpen && (
+            <Modal header='Remove the Organization?'
+                   subtitle='Are you sure you want to remove this Organozation?'
+                   content={
+                       <>
+                           <div className="modal-buttons">
+                               <Button style={StylesForButton.outline}
+                                       text='No'
+                                       onClick={() => setIsDeleteModalOpen(false)}/>
+                               <Button style={StylesForButton.primary}
+                                       text='Yes, remove'
+                                       onClick={handleDeleteOrganization}/>
+                           </div>
+                       </>
+                   }/>
+        )}
+
+        {isEditModalOpen && (
+            <Modal header="Specify the Organization's name"
+                   content={
+                       <>
+                           <Input value={organizationName}
+                                  onChange={(e) => setOrganizationName(e.target.value)}/>
+                           <div className="modal-buttons">
+                               <Button style={StylesForButton.outline}
+                                       text='Cancel'
+                                       onClick={() => setIsEditModalOpen(false)}/>
+                               <Button style={StylesForButton.primary}
+                                       text='Save changes'
+                                       onClick={handelUpdatingCompanyName}/>
+                           </div>
+                       </>
+                   }/>
+        )}
+
     </>
 
 }
