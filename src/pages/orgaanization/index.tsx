@@ -18,12 +18,10 @@ export const OrganizationPage = () => {
     const [contact, setContact] = useState(null); // Состояние для хранения данных контакта
     const [error, setError] = useState(null); // Состояние для ошибки
     const [loading, setLoading] = useState(true); // Состояние для загрузки
-    const [photos, setPhotos] = useState([]);
     const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
     const [isEditModalOpen, setIsEditModalOpen] = useState(false);
     const [organizationName, setOrganizationName] = useState('');
     const [isEditingCompanyFormOpened, setIsEditingCompanyFormOpened] = useState(false);
-
 
     const navigate = useNavigate();
     const api = new BackendApi();
@@ -69,8 +67,10 @@ export const OrganizationPage = () => {
     };
 
     const handelDeletePhoto = (photoName: string) => {
-        const updatedPhotos = photos.filter((photo) => photo.name !== photoName);
-        setPhotos(updatedPhotos);
+        const updatedPhotos = company.photos.filter((photo) => photo.name !== photoName);
+        setCompany((prev) => {
+            return {...prev, photos: updatedPhotos}
+        })
         api.deletePhoto(company.id, photoName)
     }
 
@@ -79,8 +79,10 @@ export const OrganizationPage = () => {
         if (!file || !company) return;
 
         try {
-            const photo = await api.postImage(company.id, file); // отправляем
-            setPhotos((prevPhotos) => [...prevPhotos, photo]); // обновляем стейт
+            const photo = await api.postImage(company.id, file);
+            setCompany((prev) => {
+                return {...prev, photos: [...prev.photos, photo]}
+            })
         } catch (err) {
         }
     };
@@ -150,7 +152,7 @@ const onFormSubmitted=(company)=>{
             </Card>
 
 
-            <CardWithPhoto photos={photos}
+            <CardWithPhoto photos={company.photos}
                            onDeletePhoto={handelDeletePhoto}>
                 <Header text='Photos' type={TypeForHeader.secondary}>
                     <label className='button button-flattened'>
