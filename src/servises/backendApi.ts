@@ -39,8 +39,8 @@ export class BackendApi {
             shortName: data.shortName,
             businessEntity: data.businessEntity,
             contract: {
-                no: data.no,  // предполагаю, что данные могут быть в contractNo и contractDate
-                issue_date: data.issue_date,  // так как в документации ожидается строка с датой
+                no: data.contract.no,  // предполагаю, что данные могут быть в contractNo и contractDate
+                issue_date: data.contract.issue_date,  // так как в документации ожидается строка с датой
             },
             type: data.type,  // массив типов
         };

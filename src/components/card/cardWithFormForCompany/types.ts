@@ -1,6 +1,7 @@
-import {Company} from "../../../types/types";
+import {Company} from "../../../types/types.ts";
 
 export type CardWithFormForCompanyProps ={
     company:Company;
-    onCancel:()=>void
+    onCancel: () => void
+    onCompanyDataUpdated: (Company) => void
 }

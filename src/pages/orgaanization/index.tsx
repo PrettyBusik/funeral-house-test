@@ -10,7 +10,6 @@ import {useNavigate, useParams} from "react-router-dom";
 import React, {useEffect, useState} from "react";
 import {Modal} from "../../components/modal/index.tsx";
 import {Input} from "../../components/input/index.tsx";
-import {Form} from "../../components/form/index.tsx";
 import {TypeForHeader} from "../../components/header/types.ts";
 import {CardWithFormForCompany} from "../../components/card/cardWithFormForCompany/index.tsx";
 
@@ -104,6 +103,10 @@ export const OrganizationPage = () => {
         }
     };
 
+const onFormSubmitted=(company)=>{
+    setCompany(company)
+    setIsEditingCompanyFormOpened(false)
+}
 
     return <>
         {/*<Header text={`${company?.name}`} onDelete={handleOpenDeleteModal} onEdit={handleOpenEditeModal}/>*/}
@@ -196,7 +199,9 @@ export const OrganizationPage = () => {
                    }/>
         )}
 <div style={{marginBottom:'50px'}}></div>
-        {isEditingCompanyFormOpened &&  <CardWithFormForCompany company={company} onCancel={()=>setIsEditingCompanyFormOpened(false)}/>}
+        {isEditingCompanyFormOpened &&  <CardWithFormForCompany company={company}
+                                                                onCancel={()=>setIsEditingCompanyFormOpened(false)}
+        onCompanyDataUpdated={onFormSubmitted}/>}
 
     </>
 
