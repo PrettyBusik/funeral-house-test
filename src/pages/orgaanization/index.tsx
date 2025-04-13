@@ -12,6 +12,7 @@ import {Modal} from "../../components/modal/index.tsx";
 import {Input} from "../../components/input/index.tsx";
 import {TypeForHeader} from "../../components/header/types.ts";
 import {CardWithFormForCompany} from "../../components/card/cardWithFormForCompany/index.tsx";
+import {CardWithFormForContacts} from "../../components/card/cardWithFormForContacts/index.tsx";
 
 export const OrganizationPage = () => {
     const [company, setCompany] = useState(null); // Состояние для хранения данных компании
@@ -22,6 +23,7 @@ export const OrganizationPage = () => {
     const [isEditModalOpen, setIsEditModalOpen] = useState(false);
     const [organizationName, setOrganizationName] = useState('');
     const [isEditingCompanyFormOpened, setIsEditingCompanyFormOpened] = useState(false);
+    const [isEditingContactsFormOpened, setIsEditingContactsFormOpened] = useState(false);
 
     const navigate = useNavigate();
     const api = new BackendApi();
@@ -105,10 +107,15 @@ export const OrganizationPage = () => {
         }
     };
 
-const onFormSubmitted=(company)=>{
-    setCompany(company)
-    setIsEditingCompanyFormOpened(false)
-}
+    const onCompanyFormSubmitted = (company) => {
+        setCompany(company)
+        setIsEditingCompanyFormOpened(false)
+    }
+
+    const onContactFormSubmitted = (contact) => {
+        setContact(contact)
+        setIsEditingContactsFormOpened(false)
+    }
 
     return <>
         {/*<Header text={`${company?.name}`} onDelete={handleOpenDeleteModal} onEdit={handleOpenEditeModal}/>*/}
@@ -130,7 +137,7 @@ const onFormSubmitted=(company)=>{
                 <Header text='Company detailes' type={TypeForHeader.secondary}>
                     <Button text='Edit'
                             style={StylesForButton.flattened}
-                            onClick={()=>setIsEditingCompanyFormOpened(true)}
+                            onClick={() => setIsEditingCompanyFormOpened(true)}
                             icon={<Icon nameForIcon='edit'/>}/>
                 </Header>
             </Card>
@@ -145,8 +152,7 @@ const onFormSubmitted=(company)=>{
                 <Header text='Contacts' type={TypeForHeader.secondary}>
                     <Button text='Edit'
                             style={StylesForButton.flattened}
-                            onClick={() => {
-                            }}
+                            onClick={() => setIsEditingContactsFormOpened(true)}
                             icon={<Icon nameForIcon='edit'/>}/>
                 </Header>
             </Card>
@@ -188,7 +194,7 @@ const onFormSubmitted=(company)=>{
                        <>
                            <Input
                                value={organizationName}
-                                  onChange={(e) => setOrganizationName(e.target.value)}/>
+                               onChange={(e) => setOrganizationName(e.target.value)}/>
                            <div className="modal-buttons">
                                <Button style={StylesForButton.outline}
                                        text='Cancel'
@@ -200,10 +206,15 @@ const onFormSubmitted=(company)=>{
                        </>
                    }/>
         )}
-<div style={{marginBottom:'50px'}}></div>
-        {isEditingCompanyFormOpened &&  <CardWithFormForCompany company={company}
-                                                                onCancel={()=>setIsEditingCompanyFormOpened(false)}
-        onCompanyDataUpdated={onFormSubmitted}/>}
+        <div style={{marginBottom: '50px'}}></div>
+        {isEditingCompanyFormOpened && <CardWithFormForCompany company={company}
+                                                               onCancel={() => setIsEditingCompanyFormOpened(false)}
+                                                               onCompanyDataUpdated={onCompanyFormSubmitted}/>}
+
+        <div style={{marginBottom: '50px'}}></div>
+        {isEditingContactsFormOpened && <CardWithFormForContacts contact={contact}
+                                                                 onContactDataUpdated={onContactFormSubmitted}
+                                                                 onCancel={()=>{setIsEditingContactsFormOpened(false)}}/>}
 
     </>
 

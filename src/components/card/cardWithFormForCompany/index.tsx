@@ -38,7 +38,6 @@ export const CardWithFormForCompany = (props: CardWithFormForCompanyProps) => {
         }
         api.updateInfoForCompany(props.company.id,updatedCompany )
             .then((company)=>{
-                console.log(company)
                 props.onCompanyDataUpdated(company)
             })
     }
@@ -62,7 +61,6 @@ export const CardWithFormForCompany = (props: CardWithFormForCompanyProps) => {
 
                 <div className='fields-item fields-item-short'>
                     <span className='label'>Date:</span>
-
                 </div>
                 <div className='fields-item'>
                     <Input
@@ -79,7 +77,6 @@ export const CardWithFormForCompany = (props: CardWithFormForCompanyProps) => {
                         value={formData.businessEntity}
                         onChange={(e)=>{handleChange('businessEntity',e.target.value )}}/>
                 </div>
-
             </div>
             <div className='fields'>
                 <div className='fields-item fields-item-long'>
