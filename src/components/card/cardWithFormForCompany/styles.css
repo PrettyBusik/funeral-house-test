@@ -1,27 +1,27 @@
 .fields{
     display: flex;
+    justify-content: space-between;
+    align-items: center;
     gap: 12px;
+}
+
+.fields-item{
+    flex-grow: 1;
 }
 
 .input-container{
     display: flex;
     align-items: center;
     gap: 12px;
+    justify-content: space-between;
+    flex-grow: 1;
+}
+.fields-item-long{
+    width: 148px;
+    flex-grow: 0;
 }
 
-.input-label{
-    font-weight: 400;
-    font-size: 13px;
-    line-height: 20px;
-    letter-spacing: 0.25px;
-    vertical-align: middle;
-    color: rgba(0, 0, 0, 0.5);
-}
-
-.input-label-long{
-    width: 160px;
-
-}
-.input-label-short{
-    width: 35px;
+.fields-item-short{
+    width: 23px;
+    flex-grow: 0;
 }

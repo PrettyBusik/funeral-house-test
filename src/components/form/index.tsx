@@ -11,8 +11,8 @@ export const Form = (props: FormProps) => {
         <Header
             text={props.header}
             type={TypeForHeader.secondary}>
-            <Button text='Save changes' style={StylesForButton.flattened} onClick={() => {
-            }} icon={<Icon nameForIcon={'check'}/>}/>
+            <Button text='Save changes' style={StylesForButton.flattened} onClick={props.children.children}
+                    icon={<Icon nameForIcon={'check'}/>}/>
             <Button text='Cancel' style={StylesForButton.flattened} onClick={() => {
             }} icon={<Icon nameForIcon={'cancel'}/>}/>
         </Header>

@@ -9,7 +9,7 @@ export const Card = (props:CardProps) => {
         <div className='card-body'>
             {Object.entries(props.data).map(([key, value])=>(
                 <div className='card-body-line'>
-                    <div className='card-body-line-key'>{key}</div>
+                    <div className='card-body-line-key label'>{key}</div>
                     <div className='card-body-line-value'>{value}</div>
                 </div>
             ))}

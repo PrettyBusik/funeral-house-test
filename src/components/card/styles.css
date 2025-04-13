@@ -44,11 +44,6 @@
 .card-body-line-key {
     width: 160px;
     text-align: start;
-    font-weight: 400;
-    font-size: 13px;
-    line-height: 20px;
-    letter-spacing: 0.25px;
-    color: rgba(0, 0, 0, 0.5);
 }
 
 .card-body-line-value {

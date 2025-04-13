@@ -60,3 +60,11 @@ code {
 html, body, #root, .page-container {
   height: 100%;
 }
+
+.label {
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 20px;
+  letter-spacing: 0.25px;
+  color: rgba(0, 0, 0, 0.5);
+}

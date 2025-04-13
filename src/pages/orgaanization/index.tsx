@@ -23,6 +23,7 @@ export const OrganizationPage = () => {
     const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
     const [isEditModalOpen, setIsEditModalOpen] = useState(false);
     const [organizationName, setOrganizationName] = useState('');
+    const [isEditingCompanyFormOpened, setIsEditingCompanyFormOpened] = useState(false);
 
 
     const navigate = useNavigate();
@@ -124,8 +125,7 @@ export const OrganizationPage = () => {
                 <Header text='Company detailes' type={TypeForHeader.secondary}>
                     <Button text='Edit'
                             style={StylesForButton.flattened}
-                            onClick={() => {
-                            }}
+                            onClick={()=>setIsEditingCompanyFormOpened(true)}
                             icon={<Icon nameForIcon='edit'/>}/>
                 </Header>
             </Card>
@@ -196,7 +196,7 @@ export const OrganizationPage = () => {
                    }/>
         )}
 <div style={{marginBottom:'50px'}}></div>
-        <CardWithFormForCompany company={company}/>
+        {isEditingCompanyFormOpened &&  <CardWithFormForCompany company={company} onCancel={()=>setIsEditingCompanyFormOpened(false)}/>}
 
     </>
 

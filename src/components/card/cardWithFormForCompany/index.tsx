@@ -4,7 +4,7 @@ import {CardWithFormForCompanyProps} from "/types.ts";
 import "./styles.css";
 import React, {useState} from "react";
 
-export const CardWithFormForCompany = (props:CardWithFormForCompanyProps) => {
+export const CardWithFormForCompany = (props: CardWithFormForCompanyProps) => {
     const [formData, setFormData] = useState({
         contract: {
             no: props.company.contract.no,
@@ -16,54 +16,73 @@ export const CardWithFormForCompany = (props:CardWithFormForCompanyProps) => {
 
     const handleChangeContractNo = (e: React.ChangeEvent<HTMLInputElement>) => {
         const value = e.target;
-        setFormData((prev) => ({ ...prev, contract: {
+        setFormData((prev) => ({
+            ...prev, contract: {
                 ...prev.contract,
                 no: value,
-            } }));
+            }
+        }));
     };
     const handleChangeContractIssueDate = (e: React.ChangeEvent<HTMLInputElement>) => {
         const value = e.target;
-        setFormData((prev) => ({ ...prev, contract: {
+        setFormData((prev) => ({
+            ...prev, contract: {
                 ...prev.contract,
                 issue_date: value,
-            } }));
+            }
+        }));
     };
     const handleChangeBusinessEntity = (e: React.ChangeEvent<HTMLInputElement>) => {
         const value = e.target;
-        setFormData((prev) => ({ ...prev, businessEntity: value, }));
+        setFormData((prev) => ({...prev, businessEntity: value,}));
     };
     const handleChangeCompanyType = (e: React.ChangeEvent<HTMLInputElement>) => {
         const value = e.target;
-        setFormData((prev) => ({ ...prev, type: value }));
+        setFormData((prev) => ({...prev, type: value}));
     };
 
     return <div className='card-container'>
         <Form header='Company Details'>
             <div className='fields'>
-                <div className='input-container'>
-                    <span className='input-label input-label-long'>Agreement number:</span>
-                    <Input
-                           value={formData.contract.no}
-                           onChange={handleChangeContractNo}/>
+                <div className='fields-item fields-item-long'>
+                    <span className='label'>Agreement number:</span>
                 </div>
-                <div className='input-container'>
-                    <span className='input-label input-label-short'>Date:</span>
+                <div className='fields-item'>
                     <Input
-                           value={formData.contract.issue_date}
-                           onChange={handleChangeContractIssueDate}/>
+                        value={formData.contract.no}
+                        onChange={handleChangeContractNo}/>
+                </div>
+
+                <div className='fields-item fields-item-short'>
+                    <span className='label'>Date:</span>
+
+                </div>
+                <div className='fields-item'>
+                    <Input
+                        value={formData.contract.issue_date}
+                        onChange={handleChangeContractIssueDate}/>
                 </div>
             </div>
-            <div className='input-container'>
-                <span className='input-label input-label-long'>Business entity:</span>
-                <Input
-                       value={formData.businessEntity}
-                       onChange={handleChangeBusinessEntity}/>
+            <div className='fields'>
+                <div className='fields-item fields-item-long' >
+                    <span className='label'>Business entity:</span>
+                </div>
+                <div className='fields-item'>
+                    <Input
+                    value={formData.businessEntity}
+                    onChange={handleChangeBusinessEntity}/>
+                </div>
+
             </div>
-            <div className='input-container'>
-                <span className='input-label input-label-long'>Company type:</span>
-                <Input
-                       value={formData.type}
-                       onChange={handleChangeCompanyType}/>
+            <div className='fields'>
+                <div className='fields-item fields-item-long' >
+                    <span className='label'>Company typey:</span>
+                </div>
+                <div className='fields-item'>
+                    <Input
+                        value={formData.type}
+                        onChange={handleChangeCompanyType}/>
+                </div>
             </div>
         </Form>
     </div>
