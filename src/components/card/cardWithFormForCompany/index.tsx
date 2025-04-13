@@ -6,39 +6,16 @@ import React, {useState} from "react";
 
 export const CardWithFormForCompany = (props: CardWithFormForCompanyProps) => {
     const [formData, setFormData] = useState({
-        contract: {
-            no: props.company.contract.no,
-            issue_date: props.company.contract.issue_date
-        },
-        businessEntity: props.company.businessEntity,
-        type: props.company.type,
+        contractNo: props.company.contract.no||"",
+        contractIssue_date: props.company.contract.issue_date||"",
+        businessEntity: props.company.businessEntity||"",
+        type: props.company.type||"",
     });
 
-    const handleChangeContractNo = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const value = e.target;
+    const handleChange = (fieldName, value) => {
         setFormData((prev) => ({
-            ...prev, contract: {
-                ...prev.contract,
-                no: value,
-            }
+            ...prev, [fieldName]:  value
         }));
-    };
-    const handleChangeContractIssueDate = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const value = e.target;
-        setFormData((prev) => ({
-            ...prev, contract: {
-                ...prev.contract,
-                issue_date: value,
-            }
-        }));
-    };
-    const handleChangeBusinessEntity = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const value = e.target;
-        setFormData((prev) => ({...prev, businessEntity: value,}));
-    };
-    const handleChangeCompanyType = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const value = e.target;
-        setFormData((prev) => ({...prev, type: value}));
     };
 
     return <div className='card-container'>
@@ -49,8 +26,8 @@ export const CardWithFormForCompany = (props: CardWithFormForCompanyProps) => {
                 </div>
                 <div className='fields-item'>
                     <Input
-                        value={formData.contract.no}
-                        onChange={handleChangeContractNo}/>
+                        value={formData.contractNo}
+                        onChange={(e)=>{handleChange('contractNo',e.target.value )}}/>
                 </div>
 
                 <div className='fields-item fields-item-short'>
@@ -59,29 +36,29 @@ export const CardWithFormForCompany = (props: CardWithFormForCompanyProps) => {
                 </div>
                 <div className='fields-item'>
                     <Input
-                        value={formData.contract.issue_date}
-                        onChange={handleChangeContractIssueDate}/>
+                        value={formData.contractIssue_date}
+                        onChange={(e)=>{handleChange('contractIssue_date',e.target.value )}}/>
                 </div>
             </div>
             <div className='fields'>
-                <div className='fields-item fields-item-long' >
+                <div className='fields-item fields-item-long'>
                     <span className='label'>Business entity:</span>
                 </div>
                 <div className='fields-item'>
                     <Input
-                    value={formData.businessEntity}
-                    onChange={handleChangeBusinessEntity}/>
+                        value={formData.businessEntity}
+                        onChange={(e)=>{handleChange('businessEntity',e.target.value )}}/>
                 </div>
 
             </div>
             <div className='fields'>
-                <div className='fields-item fields-item-long' >
-                    <span className='label'>Company typey:</span>
+                <div className='fields-item fields-item-long'>
+                    <span className='label'>Company type:</span>
                 </div>
                 <div className='fields-item'>
                     <Input
                         value={formData.type}
-                        onChange={handleChangeCompanyType}/>
+                        onChange={(e)=>{handleChange('type',e.target.value )}}/>
                 </div>
             </div>
         </Form>
