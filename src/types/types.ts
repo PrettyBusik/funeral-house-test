@@ -15,9 +15,24 @@ export type Company = {
     photo: Photo[]
 }
 
+
 export  type BusinessType = 'Partnership' | 'Limited Liability Company' | 'Sole Proprietorship';
 
-export type TypeOfCompany = 'funeral home' | 'logistics service' | 'burial care contractor';
+export type TypeOfCompany = 'funeral_home' | 'logistics_services' | 'burial_care_contractor';
+
+
+export const BusinessTypeOptions:Record<BusinessType,BusinessType>={
+    'Partnership':'Partnership',
+    'Limited Liability Company':'Limited Liability Company',
+    'Sole Proprietorship':'Sole Proprietorship'
+}
+
+export const TypeOfCompanyOptions:Record<TypeOfCompany,string>={
+    'funeral_home':'Funeral Home',
+    'logistics_services':'Logistics services',
+    'burial_care_contractor':'Burial care Contractor'
+}
+
 
 export type Photo = {
     name: string;

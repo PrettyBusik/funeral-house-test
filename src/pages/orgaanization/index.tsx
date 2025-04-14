@@ -13,6 +13,8 @@ import {Input} from "../../components/input/index.tsx";
 import {TypeForHeader} from "../../components/header/types.ts";
 import {CardWithFormForCompany} from "../../components/card/cardWithFormForCompany/index.tsx";
 import {CardWithFormForContacts} from "../../components/card/cardWithFormForContacts/index.tsx";
+import {Select, Selector} from "../../components/selector/index.tsx";
+import {BusinessTypeOptions, TypeOfCompanyOptions} from "../../types/types.ts";
 
 export const OrganizationPage = () => {
     const [company, setCompany] = useState(null); // Состояние для хранения данных компании
@@ -130,8 +132,8 @@ export const OrganizationPage = () => {
             <Card
                 data={{
                     "Agreement:": `${company.contract.no} / ${company.contract.issue_date}`,
-                    "Business entity:": company.businessEntity,
-                    "Company type:": company.type
+                    "Business entity:": BusinessTypeOptions[company.businessEntity],
+                    "Company type:": company.type.map((type)=> TypeOfCompanyOptions[type]).join(', ')
                 }}
             >
                 <Header text='Company detailes' type={TypeForHeader.secondary}>
@@ -215,6 +217,8 @@ export const OrganizationPage = () => {
         {isEditingContactsFormOpened && <CardWithFormForContacts contact={contact}
                                                                  onContactDataUpdated={onContactFormSubmitted}
                                                                  onCancel={()=>{setIsEditingContactsFormOpened(false)}}/>}
+
+        <Select/>
 
     </>
 
