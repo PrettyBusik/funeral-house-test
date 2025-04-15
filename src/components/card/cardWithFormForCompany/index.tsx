@@ -9,6 +9,8 @@ import {Button} from "../../buttons/button/index.tsx";
 import {StylesForButton} from "../../buttons/button/types.ts";
 import {Icon} from "../../icon/index.tsx";
 import {BackendApi} from "../../../servises/backendApi.ts";
+import {Selector} from "../../selector/index.tsx";
+import {BusinessTypeOptions, TypeOfCompanyOptions} from "../../../types/types.ts";
 
 export const CardWithFormForCompany = (props: CardWithFormForCompanyProps) => {
     const [formData, setFormData] = useState({
@@ -73,9 +75,11 @@ export const CardWithFormForCompany = (props: CardWithFormForCompanyProps) => {
                     <span className='label'>Business entity:</span>
                 </div>
                 <div className='fields-item'>
-                    <Input
+                    <Selector
+                        options={BusinessTypeOptions}
                         value={formData.businessEntity}
-                        onChange={(e)=>{handleChange('businessEntity',e.target.value )}}/>
+                        isMultiple={false}
+                        onChange={(value)=>handleChange('businessEntity',value )}/>
                 </div>
             </div>
             <div className='fields'>
@@ -83,9 +87,11 @@ export const CardWithFormForCompany = (props: CardWithFormForCompanyProps) => {
                     <span className='label'>Company type:</span>
                 </div>
                 <div className='fields-item'>
-                    <Input
+                    <Selector
+                        options={TypeOfCompanyOptions}
                         value={formData.type}
-                        onChange={(e)=>{handleChange('type',e.target.value )}}/>
+                        isMultiple={true}
+                        onChange={(value)=>handleChange('type',value )}/>
                 </div>
             </div>
     </div>

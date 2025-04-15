@@ -13,7 +13,7 @@ import {Input} from "../../components/input/index.tsx";
 import {TypeForHeader} from "../../components/header/types.ts";
 import {CardWithFormForCompany} from "../../components/card/cardWithFormForCompany/index.tsx";
 import {CardWithFormForContacts} from "../../components/card/cardWithFormForContacts/index.tsx";
-import {Select, Selector} from "../../components/selector/index.tsx";
+import {Selector} from "../../components/selector/index.tsx";
 import {BusinessTypeOptions, TypeOfCompanyOptions} from "../../types/types.ts";
 
 export const OrganizationPage = () => {
@@ -218,7 +218,7 @@ export const OrganizationPage = () => {
                                                                  onContactDataUpdated={onContactFormSubmitted}
                                                                  onCancel={()=>{setIsEditingContactsFormOpened(false)}}/>}
 
-        <Select/>
+
 
     </>
 
