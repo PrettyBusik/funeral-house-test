@@ -3,7 +3,7 @@ import {BackendApi} from "../../servises/backendApi.ts";
 import './styles.css'
 import {Card} from "../../components/card/index.tsx";
 import {Button} from "../../components/buttons/button/index.tsx";
-import {StylesForButton} from "../../components/buttons/button/types.ts";
+import {SizesOfButton, StylesForButton} from "../../components/buttons/button/types.ts";
 import {CardWithPhoto} from "../../components/card/cardWithPhoto/index.tsx";
 import {Icon} from "../../components/icon/index.tsx";
 import {useNavigate, useParams} from "react-router-dom";
@@ -13,7 +13,6 @@ import {Input} from "../../components/input/index.tsx";
 import {TypeForHeader} from "../../components/header/types.ts";
 import {CardWithFormForCompany} from "../../components/card/cardWithFormForCompany/index.tsx";
 import {CardWithFormForContacts} from "../../components/card/cardWithFormForContacts/index.tsx";
-import {Selector} from "../../components/selector/index.tsx";
 import {BusinessTypeOptions, TypeOfCompanyOptions} from "../../types/types.ts";
 
 export const OrganizationPage = () => {
@@ -123,10 +122,10 @@ export const OrganizationPage = () => {
         {/*<Header text={`${company?.name}`} onDelete={handleOpenDeleteModal} onEdit={handleOpenEditeModal}/>*/}
         <Header text={`${company?.name}`}
                 type={TypeForHeader.main}>
-            <Button onClick={handleOpenEditeModal} style={StylesForButton.onlyIcon}
-                    icon={<Icon nameForIcon={'edit'}/>}></Button>
-            <Button onClick={handleOpenDeleteModal} style={StylesForButton.onlyIcon}
-                    icon={<Icon nameForIcon={'trash'}/>}></Button>
+            <Button onClick={handleOpenEditeModal} style={StylesForButton.icon}
+                    icon={<Icon nameForIcon={'edit'}/>}/>
+            <Button onClick={handleOpenDeleteModal} style={StylesForButton.icon}
+                    icon={<Icon nameForIcon={'trash'}/>}/>
         </Header>
         <div className='content-organization'>
             <Card
@@ -163,9 +162,8 @@ export const OrganizationPage = () => {
             <CardWithPhoto photos={company.photos}
                            onDeletePhoto={handelDeletePhoto}>
                 <Header text='Photos' type={TypeForHeader.secondary}>
-                    <label className='button button-flattened'>
-                        <Icon nameForIcon={'add'}/>
-                        &nbsp;Add
+                    <label className='button button-flattened button-small'>
+                        <Icon nameForIcon={'add'}/> Add
                         <input className='inputForFiles' type='file'
                                onChange={handleFileUpload}/>
                     </label>
@@ -180,9 +178,13 @@ export const OrganizationPage = () => {
                        <>
                            <div className="modal-buttons">
                                <Button style={StylesForButton.outline}
+                                       size={SizesOfButton.big}
+                                       fullWidth
                                        text='No'
                                        onClick={() => setIsDeleteModalOpen(false)}/>
                                <Button style={StylesForButton.primary}
+                                       size={SizesOfButton.big}
+                                       fullWidth
                                        text='Yes, remove'
                                        onClick={handleDeleteOrganization}/>
                            </div>
@@ -199,9 +201,13 @@ export const OrganizationPage = () => {
                                onChange={(e) => setOrganizationName(e.target.value)}/>
                            <div className="modal-buttons">
                                <Button style={StylesForButton.outline}
+                                       size={SizesOfButton.big}
+                                       fullWidth
                                        text='Cancel'
                                        onClick={() => setIsEditModalOpen(false)}/>
                                <Button style={StylesForButton.primary}
+                                       size={SizesOfButton.big}
+                                       fullWidth
                                        text='Save changes'
                                        onClick={handelUpdatingCompanyName}/>
                            </div>

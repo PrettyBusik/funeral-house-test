@@ -1,22 +1,52 @@
-import {ButtonProps, StylesForButton} from "./types.ts";
+import {ButtonProps, SizesOfButton, StylesForButton} from "./types.ts";
 import "./styles.css"
 
-export const Button = (props: ButtonProps) => {
+export const Button = (
+    {
+        text,
+        icon,
+        style = StylesForButton.flattened,
+        fullWidth = false,
+        size = SizesOfButton.small,
+        onClick
+    }: ButtonProps
+) => {
     const getCssClass = () => {
-        switch (props.style) {
+        let classes = ['button'];
+
+        switch (style) {
             case StylesForButton.primary:
-                return 'button-primary';
+                classes.push('button-primary');
+                break;
             case StylesForButton.outline:
-                return 'button-outline';
+                classes.push('button-outline');
+                break;
             case StylesForButton.flattened:
-                return 'button-flattened';
-            case StylesForButton.onlyIcon:
-                return 'button-icon'
+                classes.push('button-flattened');
+                break;
+            case StylesForButton.icon:
+                classes.push('button-icon');
+                break;
         }
+
+        switch (size) {
+            case SizesOfButton.big:
+                classes.push('button-big');
+                break;
+            case SizesOfButton.small:
+                classes.push('button-small');
+                break;
+        }
+
+        if (fullWidth) {
+            classes.push('button-wide')
+        }
+
+        return classes.join(' ');
     }
-    return <button className={`button ${getCssClass()}`} onClick={props.onClick}>
-        {props.icon && <span className='button-icon-slot'>{props.icon}</span>}
-        {props.text && <span className="button-text">{props.text}</span>}
+    return <button className={getCssClass()} onClick={onClick}>
+        {icon}
+        {text && <span className="button-text">{text}</span>}
     </button>
 
 }

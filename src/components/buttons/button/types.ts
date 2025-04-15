@@ -1,9 +1,11 @@
 import * as React from "react";
 
-export type ButtonProps = {
+export interface ButtonProps {
     text?: string,
     style: StylesForButton,
     icon?: React.ReactNode,
+    size:SizesOfButton,
+    fullWidth?:boolean,
     onClick: () => void,
 }
 
@@ -11,5 +13,10 @@ export enum StylesForButton {
     primary,
     outline,
     flattened,
-    onlyIcon
+    icon
+}
+
+export enum SizesOfButton {
+    big,
+    small
 }

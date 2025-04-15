@@ -47,9 +47,8 @@ export const CardWithFormForCompany = (props: CardWithFormForCompanyProps) => {
         <Header
             text='Company Details'
             type={TypeForHeader.secondary}>
-            <Button text='Save changes' style={StylesForButton.flattened} onClick={handelSubmit}
-                    icon={<Icon nameForIcon={'check'}/>}/>
-            <Button text='Cancel' style={StylesForButton.flattened} onClick={props.onCancel} icon={<Icon nameForIcon={'cancel'}/>}/>
+            <Button text='Save changes' onClick={handelSubmit} icon={<Icon nameForIcon={'check'}/>}/>
+            <Button text='Cancel' onClick={props.onCancel} icon={<Icon nameForIcon={'cancel'}/>}/>
         </Header>
             <div className='fields'>
                 <div className='fields-item fields-item-long'>

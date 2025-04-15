@@ -17,7 +17,7 @@ export const CardWithPhoto=(props:CardWithPhotoProps)=>{
                     <div className='image-wrapper' key={image.filepath}>
                         <img src={image.thumbpath} alt={image.name} className='image-preview' />
                         <div className='image-button' >
-                            <Button icon={<Icon nameForIcon='trashWhite'/>} style={StylesForButton.onlyIcon} onClick={()=>props.onDeletePhoto(image.name)}/>
+                            <Button style={StylesForButton.primary} icon={<Icon nameForIcon='trashWhite'/>} onClick={()=>props.onDeletePhoto(image.name)}/>
                         </div>
                     </div>
                 </div>
