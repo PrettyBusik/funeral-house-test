@@ -214,12 +214,10 @@ export const OrganizationPage = () => {
                        </>
                    }/>
         )}
-        <div style={{marginBottom: '50px'}}></div>
         {isEditingCompanyFormOpened && <CardWithFormForCompany company={company}
                                                                onCancel={() => setIsEditingCompanyFormOpened(false)}
                                                                onCompanyDataUpdated={onCompanyFormSubmitted}/>}
 
-        <div style={{marginBottom: '50px'}}></div>
         {isEditingContactsFormOpened && <CardWithFormForContacts contact={contact}
                                                                  onContactDataUpdated={onContactFormSubmitted}
                                                                  onCancel={()=>{setIsEditingContactsFormOpened(false)}}/>}

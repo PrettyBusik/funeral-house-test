@@ -57,8 +57,14 @@ code {
     monospace;
 }
 
-html, body, #root, .page-container {
+html, body, #root {
   height: 100%;
+}
+
+.page-container{
+  display: flex;
+  flex: 1;
+  min-height: 100vh;
 }
 
 .label {
