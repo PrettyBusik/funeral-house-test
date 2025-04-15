@@ -1,4 +1,5 @@
 import {SelectorProps} from "./types.ts";
+import "./styles.css"
 import React from "react";
 
 export const Selector=(props:SelectorProps)=>{
@@ -8,14 +9,14 @@ export const Selector=(props:SelectorProps)=>{
     };
     return <>
         <select
-            id="selector"
+            className='selector'
             multiple={props.isMultiple}
             size={props.options.length}
             value={props.value}
             onChange={handleChange}
         >
             {Object.entries(props.options).map(([key, label]) => (
-                <option key={key} value={key}>
+                <option key={key} value={key} className='option'>
                     {label}
                 </option>
             ))}
