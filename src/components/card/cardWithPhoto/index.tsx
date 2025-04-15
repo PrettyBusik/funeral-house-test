@@ -7,6 +7,8 @@ import {Icon} from "../../icon/index.tsx";
 export const CardWithPhoto=(props:CardWithPhotoProps)=>{
     return <div className='card-container'>
         <div className='card-container-title'>
+            {/*<h3 className='card-container-title-text'>{props.header} </h3>*/}
+            {/*<div className='card-container-title-button'>{props.headerButton}</div>*/}
             {props.children}
         </div>
         <div className='images-container'>
@@ -15,9 +17,7 @@ export const CardWithPhoto=(props:CardWithPhotoProps)=>{
                     <div className='image-wrapper' key={image.filepath}>
                         <img src={image.thumbpath} alt={image.name} className='image-preview' />
                         <div className='image-button' >
-                            <Button icon={<Icon nameForIcon='trashWhite'/>}
-                                    style={StylesForButton.onlyIcon}
-                                    onClick={(image)=>props.onDeletePhoto(image.name)}/>
+                            <Button icon={<Icon nameForIcon='trashWhite'/>} style={StylesForButton.onlyIcon} onClick={()=>props.onDeletePhoto(image.name)}/>
                         </div>
                     </div>
                 </div>
@@ -25,5 +25,3 @@ export const CardWithPhoto=(props:CardWithPhotoProps)=>{
         </div>
     </div>
 }
-
-
