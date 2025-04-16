@@ -13,11 +13,9 @@ export const Header =(props:HeaderProp)=> {
     }
 
     return <div className='header-container'>
-        {/*<p className='header-container-header'>{props.text}</p>*/}
         <p className={getCssClass()}>{props.text}</p>
         <div className='header-container-buttons'>
             {props.children}
         </div>
-
     </div>
 }

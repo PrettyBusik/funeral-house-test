@@ -1,5 +1,4 @@
 import {Company, CompanyUpdate, Contact, ContactUpdate, Photo} from "../types/types";
-import {DELETE} from "mobx/dist/types/observablemap";
 
 export class BackendApi {
     private auth = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiVVNFUk5BTUUiLCJpYXQiOjE3NDQyODIzMjksImV4cCI6MTc0NDg4NzEyOX0.XvqAd2mhX9uFRAlWaAGeS0sDOrnamkFtsdty_HBMMGA';
@@ -39,8 +38,8 @@ export class BackendApi {
             shortName: data.shortName,
             businessEntity: data.businessEntity,
             contract: {
-                no: data.contract.no,  // предполагаю, что данные могут быть в contractNo и contractDate
-                issue_date: data.contract.issue_date,  // так как в документации ожидается строка с датой
+                no: data.contract.no,
+                issue_date: data.contract.issue_date,
             },
             type: data.type,  // массив типов
         };

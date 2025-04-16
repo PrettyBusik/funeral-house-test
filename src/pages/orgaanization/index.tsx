@@ -119,7 +119,6 @@ export const OrganizationPage = () => {
     }
 
     return <>
-        {/*<Header text={`${company?.name}`} onDelete={handleOpenDeleteModal} onEdit={handleOpenEditeModal}/>*/}
         <Header text={`${company?.name}`}
                 type={TypeForHeader.main}>
             <Button onClick={handleOpenEditeModal} style={StylesForButton.icon}
@@ -143,6 +142,10 @@ export const OrganizationPage = () => {
                 </Header>
             </Card>
 
+            {isEditingCompanyFormOpened && <CardWithFormForCompany company={company}
+                                                                   onCancel={() => setIsEditingCompanyFormOpened(false)}
+                                                                   onCompanyDataUpdated={onCompanyFormSubmitted}/>}
+
             <Card
                 data={{
                     'Responsible person:': `${contact.firstname} ${contact.lastname}`,
@@ -158,6 +161,9 @@ export const OrganizationPage = () => {
                 </Header>
             </Card>
 
+            {isEditingContactsFormOpened && <CardWithFormForContacts contact={contact}
+                                                                     onContactDataUpdated={onContactFormSubmitted}
+                                                                     onCancel={()=>{setIsEditingContactsFormOpened(false)}}/>}
 
             <CardWithPhoto photos={company.photos}
                            onDeletePhoto={handelDeletePhoto}>
@@ -214,16 +220,6 @@ export const OrganizationPage = () => {
                        </>
                    }/>
         )}
-        {isEditingCompanyFormOpened && <CardWithFormForCompany company={company}
-                                                               onCancel={() => setIsEditingCompanyFormOpened(false)}
-                                                               onCompanyDataUpdated={onCompanyFormSubmitted}/>}
-
-        {isEditingContactsFormOpened && <CardWithFormForContacts contact={contact}
-                                                                 onContactDataUpdated={onContactFormSubmitted}
-                                                                 onCancel={()=>{setIsEditingContactsFormOpened(false)}}/>}
-
-
-
     </>
 
 }

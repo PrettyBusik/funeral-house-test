@@ -9,7 +9,6 @@ import {BackendApi} from "../../../servises/backendApi.ts";
 import React, {useState} from "react";
 
 export const CardWithFormForContacts=(props:CardWithFormForContactsProps)=>{
-    console.log(props.contact.id)
     const [formData, setFormData] = useState({
         personName: `${props.contact.firstname} ${props.contact.lastname}`||"",
         phone: props.contact.phone||"",
